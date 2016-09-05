@@ -12,7 +12,7 @@ import com.wp.mobileguard.R;
 
 /**
  * Created by WangPeng on 2016/3/30.
- * Email:wp20082009@foxmail.com
+ *
  */
 public abstract class BaseSetupActivity extends Activity {
     private GestureDetector gestureDetector;

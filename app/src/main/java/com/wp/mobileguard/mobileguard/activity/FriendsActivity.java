@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * 显示所有好友信息的界面
  * Created by WangPeng on 2016/4/1.
- * Email:wp20082009@foxmail.com
+ *
  */
 public class FriendsActivity extends ListActivity {
     private static final int LOADING = 1;
