@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:fromXDelta="-100%"
+        android:toXDelta="0"
+        android:fromYDelta="0"
+        android:toYDelta="0"
+        android:duration="500">
+    </translate>
+    <!--在上一步添加动画渐变的效果-->
+    <alpha
+        android:duration="500"
+        android:fromAlpha="0"
+        android:toAlpha="1">
+    </alpha>
+</set>

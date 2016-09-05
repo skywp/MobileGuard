@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wp.mobileguard"
+    android:versionCode="1"
+    android:versionName="牙刷版">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!--定位权限-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".mobileguard.activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mobileguard.activity.HomeActivity"></activity>
+        <activity android:name=".mobileguard.activity.LostFindActivity"></activity>
+        <activity android:name=".mobileguard.activity.Setup1Activity"></activity>
+        <activity android:name=".mobileguard.activity.Setup2Activity"></activity>
+        <activity android:name=".mobileguard.activity.Setup3Activity"></activity>
+        <activity android:name=".mobileguard.activity.Setup4Activity"></activity>
+        <activity android:name=".mobileguard.activity.FriendsActivity"></activity>
+        <activity android:name=".mobileguard.activity.SettingCenterActivity"></activity>
+        <activity android:name=".mobileguard.activity.TelSmsSafeActivity"></activity>
+        <activity android:name=".mobileguard.activity.TelSmsSafeActivityPage"></activity>
+
+        <service android:name=".mobileguard.service.LostFindService"></service>
+        <service android:name=".mobileguard.service.LocationService"></service>
+
+        <receiver android:name=".mobileguard.receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".mobileguard.receiver.DeviceAdminSample"
+            android:label="@string/sample_device_admin"
+            android:description="@string/sample_device_admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

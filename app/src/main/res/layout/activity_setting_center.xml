@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myAppAttr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/tv_tile"
+        android:text="设置中心" />
+
+    <com.wp.mobileguard.mobileguard.view.SettingCenterItemView
+        android:id="@+id/sciv_setting_center_autoupdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        myAppAttr:content="自动更新已经关闭-自动更新已经开启"
+        myAppAttr:titleName="自动更新设置">
+    </com.wp.mobileguard.mobileguard.view.SettingCenterItemView>
+
+    <com.wp.mobileguard.mobileguard.view.SettingCenterItemView
+        android:id="@+id/sciv_setting_center_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        myAppAttr:content="黑名单拦截已经关闭-黑名单拦截已经开启"
+        myAppAttr:titleName="黑名单拦截设置">
+    </com.wp.mobileguard.mobileguard.view.SettingCenterItemView>
+
+
+</LinearLayout>
