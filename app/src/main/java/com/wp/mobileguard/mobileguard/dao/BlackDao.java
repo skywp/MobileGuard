@@ -14,8 +14,8 @@ import java.util.List;
 
 /**
  * 黑名单数据的业务封装类
- * Created by WangPeng on 2016/4/13.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/13.
+ *
  */
 public class BlackDao {
     private BlackDB blackDB;
