@@ -43,6 +43,7 @@ import android.widget.Toast;
 
 /**
  * 主要是做了检查并更新版本和软件的Splash界面
+ *
  */
 public class SplashActivity extends Activity {
 

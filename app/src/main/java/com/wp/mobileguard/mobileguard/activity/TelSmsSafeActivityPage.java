@@ -31,7 +31,6 @@ import java.util.List;
  * 在当前的界面中用一个FrameLayout包含了三个组件。通过设置<br/>
  * view属性来做到分别控制。
  * Created by WangPeng on 2016/4/12.
- * Email:wp20082009@foxmail.com
  */
 public class TelSmsSafeActivityPage extends Activity {
     private static final int LOADING = 1;

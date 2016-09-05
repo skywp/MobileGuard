@@ -14,7 +14,7 @@ import com.wp.mobileguard.mobileguard.utils.SpTools;
 /**
  * 第一个设置向导界面
  * Created by WangPeng on 2016/3/30.
- * Email:wp20082009@foxmail.com
+ *
  */
 public class Setup4Activity extends BaseSetupActivity {
     private CheckBox cb_isProtected;

@@ -12,7 +12,7 @@ import com.wp.mobileguard.mobileguard.view.SettingCenterItemView;
 
 /**
  * Created by WangPeng on 2016/4/7.
- * Email:wp20082009@foxmail.com
+ *
  */
 public class SettingCenterActivity extends Activity {
     private SettingCenterItemView sciv_autoupdate;
