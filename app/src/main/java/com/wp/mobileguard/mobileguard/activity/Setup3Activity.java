@@ -15,6 +15,7 @@ import com.wp.mobileguard.mobileguard.utils.SpTools;
  * 第一个设置向导界面
  * Created by WangPeng on 2016/3/30.
  *
+ *
  */
 public class Setup3Activity extends BaseSetupActivity {
 

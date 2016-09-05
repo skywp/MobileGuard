@@ -29,7 +29,7 @@ import java.util.List;
  * 通讯卫视数据的处理，短信和电话
  * 在当前的界面中用一个FrameLayout包含了三个组件。通过设置<br/>
  * view属性来做到分别控制。
- * Created by WangPeng on 2016/4/12.
+ * Created by wp 2016/4/12.
  *
  */
 public class TelSmsSafeActivity extends Activity {

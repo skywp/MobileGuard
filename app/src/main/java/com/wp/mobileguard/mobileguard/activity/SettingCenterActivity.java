@@ -11,6 +11,7 @@ import com.wp.mobileguard.mobileguard.utils.SpTools;
 import com.wp.mobileguard.mobileguard.view.SettingCenterItemView;
 
 /**
+ *
  * Created by WangPeng on 2016/4/7.
  *
  */

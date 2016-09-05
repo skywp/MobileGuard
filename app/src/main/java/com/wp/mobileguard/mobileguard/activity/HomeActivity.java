@@ -25,7 +25,6 @@ import static com.wp.mobileguard.R.id.gv_home_menus;
 
 /**
  * Created by WangPeng on 2016/3/22.
- *
  * 主界面
  */
 public class HomeActivity extends Activity {
