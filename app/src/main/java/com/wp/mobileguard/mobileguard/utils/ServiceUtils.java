@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * 判断服务的状态
- * Created by WangPeng on 2016/4/2.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/2.
+ *
  */
 public class ServiceUtils {
     /**

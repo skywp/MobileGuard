@@ -1,8 +1,8 @@
 package com.wp.mobileguard.mobileguard.utils;
 
 /**
- * Created by WangPeng on 2016/3/29.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/3/29.
+ *
  */
 public interface MyConstant {
     String SPFILE = "config";//配置文件信息

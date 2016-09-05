@@ -4,8 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by WangPeng on 2016/3/29.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/3/29.
+ *
  */
 public class Md5Utils {
     public static String md5(String str) {

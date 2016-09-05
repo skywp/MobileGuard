@@ -13,8 +13,8 @@ import com.wp.mobileguard.mobileguard.utils.SpTools;
 
 /**
  * 开机启动的广播接收者
- * Created by WangPeng on 2016/4/3.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/3.
+ *
  */
 public class BootReceiver extends BroadcastReceiver {
     @Override

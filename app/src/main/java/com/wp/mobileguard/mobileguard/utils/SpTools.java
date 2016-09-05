@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by WangPeng on 2016/3/29.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/3/29.
+ *
  */
 public class SpTools {
     public static void putString(Context context,String key,String value){

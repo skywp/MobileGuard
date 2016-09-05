@@ -15,8 +15,8 @@ import com.wp.mobileguard.R;
 
 /**
  * 自定义组合控件
- * Created by WangPeng on 2016/4/7.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/7.
+ *
  */
 public class SettingCenterItemView extends LinearLayout {
     private TextView tv_title;

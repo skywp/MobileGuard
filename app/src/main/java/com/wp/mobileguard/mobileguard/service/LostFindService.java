@@ -14,8 +14,8 @@ import android.telephony.SmsMessage;
 import com.wp.mobileguard.R;
 
 /**
- * Created by WangPeng on 2016/4/2.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/2.
+ *
  */
 public class LostFindService extends Service{
     private SmsReceiver receiver;

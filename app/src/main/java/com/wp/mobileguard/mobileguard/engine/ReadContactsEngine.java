@@ -11,8 +11,8 @@ import java.util.List;
 
 /**
  * 读取手机联系人的功能类
- * Created by WangPeng on 2016/3/31.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/3/31.
+ *
  */
 public class ReadContactsEngine {
     /**

@@ -1,8 +1,8 @@
 package com.wp.mobileguard.mobileguard.utils;
 
 /**
- * Created by WangPeng on 2016/4/6.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/6.
+ *
  */
 public class EncryptTools {
     /**

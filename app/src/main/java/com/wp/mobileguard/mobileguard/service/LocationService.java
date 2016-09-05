@@ -18,8 +18,8 @@ import java.util.List;
 
 /**
  * 定位管理器，用来获取定位信息
- * Created by WangPeng on 2016/4/3.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/3.
+ *
  */
 public class LocationService extends Service {
     private LocationManager locationManager;
