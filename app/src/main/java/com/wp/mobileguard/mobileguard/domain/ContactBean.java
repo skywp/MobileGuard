@@ -2,8 +2,8 @@ package com.wp.mobileguard.mobileguard.domain;
 
 /**
  * 手机联系人的信息封装
- * Created by WangPeng on 2016/4/1.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/1.
+ *
  */
 public class ContactBean {
     private String phone;

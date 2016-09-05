@@ -2,8 +2,8 @@ package com.wp.mobileguard.mobileguard.domain;
 
 /**
  * 定义黑名单的常量
- * Created by WangPeng on 2016/4/13.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/4/13.
+ *
  */
 public interface BlackTable {
     String PHONE = "phone";//黑名单号码

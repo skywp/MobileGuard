@@ -1,8 +1,8 @@
 package com.wp.mobileguard.mobileguard.domain;
 
 /**
- * Created by WangPeng on 2016/3/22.
- * Email:wp20082009@foxmail.com
+ * Created by wp on 2016/3/22.
+ *
  */
 public class UrlBean {
     private String url;//apk下载的路径
