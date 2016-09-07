@@ -7,6 +7,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wp.mobileguard.R;
 import com.wp.mobileguard.mobileguard.dao.BlackDao;
@@ -41,6 +43,10 @@ public class TelSmsSafeActivity extends Activity {
     ProgressBar pb_loading;
     private BlackDao blackDao;
     private MyAdapter adapter;
+    //动态加载数据的临时容器
+    private List<BlackBean> moreDatas;
+
+    private final int MOREDATASCOUNTS = 20;//分批加载的数据个数
 
     private List<BlackBean> datas = new ArrayList<>();//存放黑名单数据的容器
 
@@ -49,7 +55,58 @@ public class TelSmsSafeActivity extends Activity {
         super.onCreate(savedInstanceState);
         initView();//初始化界面
         initData();//初始化数据
+        initEvent();//初始化事件
+    }
 
+    /**
+     * 给每个组件设置事件
+     */
+    private void initEvent() {
+        //给ListView设置滑动事件
+        lv_safenumbers.setOnScrollListener(new AbsListView.OnScrollListener() {
+            /*
+             * 状态改变调用此方法
+             * SCROLL_STATE_FLING
+             *      惯性滑动
+             * SCROLL_STATE_IDLE
+             *      静止滑动
+             * SCROLL_STATE_TOUCH_SCROLL
+             *      按住滑动
+             * 三种状态，每种状态改变都会触发此方法
+             * @param view
+             * @param scrollState
+             */
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                //监控静止状态SCROLL_STATE_IDLE
+                //当出现SCROLL_STATE_IDLE的状态时候，判断是否显示最后一条数据，如果显示最后一条数据，
+                //那就加载更多的数据
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    //当出现SCROLL_STATE_IDLE的状态时候
+
+                    //判断是否显示最后一条数据，如果显示最后一条数据，那就加载更多的数据，
+                    //获取最后显示的数据位置
+                    int lastVisiblePosition = lv_safenumbers.getLastVisiblePosition();
+
+                    if (lastVisiblePosition == datas.size()-1){//最后显示的位置是最后一条数据
+                        //加载更多的数据
+                        initData();
+                    }
+                }
+            }
+
+            /*
+             *按住滑动时调用此方法
+             * @param view
+             * @param firstVisibleItem
+             * @param visibleItemCount
+             * @param totalItemCount
+             */
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
     }
 
     private Handler handler = new Handler() {
@@ -67,12 +124,17 @@ public class TelSmsSafeActivity extends Activity {
                 case FINISH://数据加载完成
                     //判断是否有数据
                     //有数据
-                    if (datas.size() != 0) {
+                    if (moreDatas.size() != 0) {
                         lv_safenumbers.setVisibility(View.VISIBLE);
                         tv_nodata.setVisibility(View.GONE);
                         pb_loading.setVisibility(View.GONE);
                         adapter.notifyDataSetChanged();//通知更新数据
                     } else {
+                        if(datas.size()!=0){
+                            Toast.makeText(getApplicationContext(),"没有更多数据",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         //没有数据
                         lv_safenumbers.setVisibility(View.GONE);
                         tv_nodata.setVisibility(View.VISIBLE);
@@ -83,6 +145,7 @@ public class TelSmsSafeActivity extends Activity {
         }
     };
 
+    /*20160907修改*/
     private void initData() {
         //从db中取黑名单数据，从子线程中取
         new Thread() {
@@ -91,8 +154,11 @@ public class TelSmsSafeActivity extends Activity {
                 //取数据之前，发个消息显示正在加载的进度条
                 handler.obtainMessage(LOADING).sendToTarget();
                 //取数据
-                SystemClock.sleep(2000);
-                datas = blackDao.getAllDatas();
+                //SystemClock.sleep(2000);
+                //获取分批加载的数据
+                moreDatas = blackDao.getMoreDatas(MOREDATASCOUNTS,datas.size());
+
+                datas.addAll(moreDatas);
                 //取数据完成，发消息通知取数据完成
                 handler.obtainMessage(FINISH).sendToTarget();
             }

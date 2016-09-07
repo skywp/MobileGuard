@@ -65,7 +65,7 @@ public class HomeActivity extends Activity {
                 //判断点击的位置
                 switch (position) {
                     case 1://通讯卫士
-                        Intent intent = new Intent(HomeActivity.this,TelSmsSafeActivityPage.class);
+                        Intent intent = new Intent(HomeActivity.this,TelSmsSafeActivity.class);
                         startActivity(intent);
                         break;
                     case 8://设置中心

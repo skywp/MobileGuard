@@ -38,6 +38,33 @@ public class BlackDao {
     }
 
     /**
+     * 分批加载数据
+     * @param datasNumber
+     *      分批加载的数据条目数
+     * @param  startIndex
+     *      取数据的起始位置
+     * @return
+     */
+    public List<BlackBean> getMoreDatas(int datasNumber,int startIndex){
+        List<BlackBean> datas = new ArrayList<>();
+        SQLiteDatabase db = blackDB.getReadableDatabase();
+        //获取black_tb的所有数据的游标
+        Cursor cursor = db.rawQuery("select " + BlackTable.PHONE + "," + BlackTable.MODE + " from " +
+                BlackTable.BLACKTABLE +" limit ?,? ", new String[]{startIndex+"",datasNumber+""});
+        while (cursor.moveToNext()) {
+            //有数据，数据封装
+            BlackBean bean = new BlackBean();
+            //封装黑名单号码
+            bean.setPhone(cursor.getString(0));
+            //封装拦截模式
+            bean.setMode(cursor.getInt(1));
+            datas.add(bean);
+        }
+        cursor.close();
+        db.close();
+        return datas;
+    }
+    /**
      * @param perPage 指定每页显示的数据量
      * @return 总页数
      */
