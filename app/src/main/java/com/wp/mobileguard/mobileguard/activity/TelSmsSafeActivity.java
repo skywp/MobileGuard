@@ -1,6 +1,8 @@
 package com.wp.mobileguard.mobileguard.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -225,7 +227,7 @@ public class TelSmsSafeActivity extends Activity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             ItemView itemView = null;//组件封装类
             if (convertView == null) {
                 convertView = View.inflate(getApplicationContext(), R.layout.item_telsmssafe_listview, null);
@@ -242,7 +244,7 @@ public class TelSmsSafeActivity extends Activity {
             }
 
             //获取当前位置的数据
-            BlackBean bean = datas.get(position);
+            final BlackBean bean = datas.get(position);
             itemView.tv_phone.setText(bean.getPhone());
             switch (bean.getMode()) {
                 case BlackTable.SMS:
@@ -255,6 +257,30 @@ public class TelSmsSafeActivity extends Activity {
                     itemView.tv_model.setText("全部拦截");
                     break;
             }
+            //设置删除数据的事件20161003
+            itemView.iv_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder ab = new AlertDialog.Builder(TelSmsSafeActivity.this);
+                    ab.setTitle("注意");
+                    ab.setMessage("是否真的删除该数据?");
+                    ab.setPositiveButton("真删除", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //从数据库中删除当前数据
+                            blackDao.delete(bean.getPhone());//取出当前行数据里的黑名单号码
+
+                            //删除容器中对应的数据
+                            datas.remove(position);
+
+                            //通知界面更新数据，让用户看到删除数据不存在
+                            adapter.notifyDataSetChanged();//让listView重新显示当前位置的数据
+                        }
+                    });
+                    ab.setNegativeButton("点错了",null);//自动关闭对话框
+
+                }
+            });
             return convertView;
         }
 
