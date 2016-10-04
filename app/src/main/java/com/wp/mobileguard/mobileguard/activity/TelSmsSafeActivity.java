@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -51,6 +53,7 @@ public class TelSmsSafeActivity extends Activity {
     private final int MOREDATASCOUNTS = 20;//分批加载的数据个数
 
     private List<BlackBean> datas = new ArrayList<>();//存放黑名单数据的容器
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -286,4 +289,71 @@ public class TelSmsSafeActivity extends Activity {
 
     }
 
+    /**
+     * 添加黑名单号码
+     * @param v
+     */
+    public void addBlackNumber(View v){
+        AlertDialog.Builder ab = new AlertDialog.Builder(this);
+        View view = View.inflate(getApplicationContext(),R.layout.dialog_add_blacknumber,null);
+        //黑名单号码编辑框
+        final EditText et_blackNumber = (EditText) view.findViewById(R.id.et_telsmssafe_blacknumber);
+        //短信拦截复选框
+        final  CheckBox cb_sms = (CheckBox) view.findViewById(R.id.cb_telsmssafe_smsmode);
+        //电话拦截复选框
+        final CheckBox cb_phone = (CheckBox) view.findViewById(R.id.cb_telsmssafe_phonemode);
+        //添加黑名单号码按钮
+        Button bt_add = (Button) view.findViewById(R.id.bt_telsmssafe_add);
+        //取消黑名单号码按钮
+        Button bt_cancel = (Button) view.findViewById(R.id.bt_telsmssafe_cancel);
+
+        bt_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        bt_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //添加黑名单数据
+                String phone = et_blackNumber.getText().toString().trim();
+                if (TextUtils.isEmpty(phone)){
+                    Toast.makeText(getApplicationContext(),"黑名单号码不能为空",Toast.LENGTH_SHORT).show();
+                }
+
+                if (!cb_phone.isChecked() && !cb_sms.isChecked()){
+                    //两个拦截都没有选择
+                    Toast.makeText(getApplicationContext(),"至少选择一种拦截模式",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int mode = 0;
+                if(cb_phone.isChecked()){
+                    mode |= BlackTable.TEL;//设置电话拦截模式
+                }
+                if(cb_sms.isChecked()){
+                    mode |= BlackTable.SMS;//设置短信拦截模式
+                }
+
+                //界面看到用户添加的数据
+                BlackBean bean = new BlackBean();
+                bean.setMode(mode);
+                bean.setPhone(phone);
+                blackDao.add(phone,mode);//添加数据到黑名单表中
+                datas.add(0,bean);//添加数据到List容器中
+
+                //让listview显示第一条数据
+                lv_safenumbers.setSelection(0);
+                dialog.dismiss();
+            }
+        });
+        ab.setView(view);
+
+        //创建对话框
+        dialog = ab.create();
+        dialog.show();
+
+    }
 }

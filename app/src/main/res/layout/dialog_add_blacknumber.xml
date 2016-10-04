@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        style="@style/tv_tile"
+        android:textColor="#000000"
+        android:text="添加黑名单号码" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:id="@+id/et_telsmssafe_blacknumber" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="短信拦截"
+            android:id="@+id/cb_telsmssafe_smsmode"/>
+        <CheckBox
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="电话拦截"
+            android:id="@+id/cb_telsmssafe_phonemode"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="@drawable/bt_selector"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:textColor="#000000"
+            android:id="@+id/bt_telsmssafe_add"/>
+        <Button
+            android:background="@drawable/bt_selector"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="#000000"
+            android:id="@+id/bt_telsmssafe_cancel"/>
+    </LinearLayout>
+</LinearLayout>

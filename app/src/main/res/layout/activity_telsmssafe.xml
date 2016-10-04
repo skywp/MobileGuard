@@ -20,6 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="8dip"
             android:text="添加"
+            android:onClick="addBlackNumber"
             android:textSize="18sp" />
     </RelativeLayout>
 
