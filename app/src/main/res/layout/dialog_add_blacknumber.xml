@@ -21,12 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="短信拦截"
+            android:textColor="#000000"
             android:id="@+id/cb_telsmssafe_smsmode"/>
         <CheckBox
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="电话拦截"
+            android:textColor="#000000"
             android:id="@+id/cb_telsmssafe_phonemode"/>
     </LinearLayout>
     <LinearLayout

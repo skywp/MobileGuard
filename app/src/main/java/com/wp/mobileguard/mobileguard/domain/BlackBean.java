@@ -25,6 +25,21 @@ public class BlackBean {
     }
 
     @Override
+    public int hashCode(){
+        return phone.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof BlackBean){
+            BlackBean bean = (BlackBean) o;
+            return phone.equals(bean.getPhone());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public String toString() {
         return "BlackBean{" +
                 "phone='" + phone + '\'' +

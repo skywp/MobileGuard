@@ -281,7 +281,7 @@ public class TelSmsSafeActivity extends Activity {
                         }
                     });
                     ab.setNegativeButton("点错了",null);//自动关闭对话框
-
+                    ab.show();
                 }
             });
             return convertView;
@@ -341,11 +341,15 @@ public class TelSmsSafeActivity extends Activity {
                 BlackBean bean = new BlackBean();
                 bean.setMode(mode);
                 bean.setPhone(phone);
-                blackDao.add(phone,mode);//添加数据到黑名单表中
+
+                blackDao.add(bean);//添加数据到黑名单表中
+                datas.remove(bean);//该删除方法要靠equals和hashCode两个方法共同判断
                 datas.add(0,bean);//添加数据到List容器中
 
                 //让listview显示第一条数据
-                lv_safenumbers.setSelection(0);
+                //lv_safenumbers.setSelection(0);
+                adapter = new MyAdapter();
+                lv_safenumbers.setAdapter(adapter);
                 dialog.dismiss();
             }
         });
